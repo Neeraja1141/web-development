@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registration</title>
+    <style>
+          #o2,#o1,#o11{
+        font-size:20px;
+       margin-left:300px;
+       border-color:rgb(167, 100, 100,0.3);
+       border-style: solid;
+       border-radius:5px;
+    }
+    #p{
+        font-size:20px;
+        margin-left:300px;
+    }
+    #f1{
+        font-size:20px;
+    }
+    #sub{
+        box-shadow:10px 10px 30px rgba(235, 136, 136, 0.3);
+        font-size:20px;
+       margin-left:300px;
+       border-color:rgb(167, 100, 100,0.3);
+       border-style: solid;
+       border-radius:5px;
+       
+    }
+    #sub:hover{
+        
+       background-color:rgb(243, 128, 128);
+       border-radius: 25px;
+    }
+
+    #disterms,#disuser,#dispw,#dishint{
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <h1>User Registration</h1> 
+    <form>
+     <label for="username" id="f1">User Name</label>
+      <input type="text" id="o1" name="username" value="" onblur="min_user()" required> <label id="disuser"></label><br> <br>
+      <label for="password" id="f1">Password</label>
+      <input type="password" id="o11" name="password" value="" onblur="min_pw(password.value)"  required><label id="dispw"></label> <br> <br>
+      <label for="package" id="f1">Select a package</label>
+      
+      <select  id="pack" name="package" onclick="selopt()"> 
+         <option id="o1" value="one">1 month(&#8377 200) </option>
+         <option id="o1" value="two">3 months(&#8377 580) </option>
+         <option id="o1" value="thr">6 months(&#8377 1100) </option>
+         <option id="o1" value="four">1 year(&#8377 1900) </option>
+     </select>
+     <label id="dishint"></label>
+         <br> <br>
+        <label for="terms" id="f1"> Check to agree to terms and conditions</label> 
+        <input type="checkbox" id= "c1" name="checkbox" > </input>
+        <h1 id="disterms"></h1>
+        <br> <br> 
+        
+        <input type="submit" id= "sub" value="Register Now" onclick="condition()"> </input>
+    </form>
+
+    <script>
+        function min_user(){
+            var user=document.getElementById("o1").value;
+            if(user.length<5){
+                document.getElementById("disuser").textContent="username entered has less than 5 characters";
+            }
+        }
+
+        function min_pw(arg){
+            var t=/^[0-9a-zA-Z]+$/;
+            if(arg.match(t)){
+            if(arg.length<8){
+                document.getElementById("dispw").textContent="password entered has less than 8 characters";
+            }
+        }
+        else{
+            document.getElementById("dispw").textContent="entered password should only contain numbers and letters";
+        }
+        }
+
+        function condition(){
+            var c=document.getElementById("c1");
+            if(c.checked==true){
+                return true;
+            }
+            else{
+             document.getElementById("disterms").textContent="please check terms and conditions before submitting";
+            }
+        }
+   
+      function selopt(){
+        var a=document.getElementById("pack").value;
+
+        if(a=="one"){
+            document.getElementById("dishint").textContent="save 500 for one year";
+        }
+        
+      } 
+
+    </script>
+</body>
+</html>
